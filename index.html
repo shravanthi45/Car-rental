@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="carRentalApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Service</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="java.js" defer></script>
+    <script src="angular.js" defer></script>
+</head>
+<body ng-controller="MainController">
+    <div>
+    <header>
+        <h1>Car Rental Services</h1>
+        <button type="button">Home</button>
+        <button type="button">About</button>
+        <button type="button">Contact Us</button>
+        <button type="button">LearnMore</button>
+        <button type="button">Login</button>
+        <h2>Rent Your Dream Car</h2>
+        <p>Affordable prices, luxury experience!</p>
+        <button ng-click="scrollToSection('cars')">View Cars</button>
+    </section>
+    </header>
+    </div>
+
+
+    <section id="cars" class="cars fade-in">
+        <h2>Available Cars</h2>
+        <div class="car-item" ng-repeat="car in cars">
+            <img ng-src="{{ car.image }}" alt="{{ car.name }}">
+            <h3>{{ car.name }}</h3>
+            <p>Price: ${{ car.price }}/day</p>
+        </div>
+    </section>
+    <section id="booking" class="booking fade-in">
+        <h2>Book a Car</h2>
+        <form id="booking-form" ng-submit="submitBooking()">
+            <input type="text" ng-model="booking.name" placeholder="Your Name" required>
+            <input type="email" ng-model="booking.email" placeholder="Your Email" required>
+            <select ng-model="booking.car" required>
+                <option value="disabled selected">Select a Car</option>
+                <option ng-repeat="car in cars" value="{{ car.name }}">{{ car.name }}</option>
+            </select>
+            <button type="submit">Book Now</button>
+        </form>
+        <p>{{ confirmationMessage }}</p>
+    </section>
+<footer>
+    <div class="about-us">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing the best service to our customers. 
+            Our team is committed to ensuring satisfaction through innovation and quality.</p>
+    </div>
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="about-us">
+                  <h2>Contact us</h2>
+                <p>Email: <a href="mailto:carrental@gmail.com">carrental@gmail.com</a></p>
+                <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p>Address:Bangalore, India</p>
+            </div>
+
+</footer>
+</body>
+</html>
